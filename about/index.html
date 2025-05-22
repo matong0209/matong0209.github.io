@@ -153,7 +153,96 @@
   <!-- 关于页 url形式：https://yoursite/about/ -->
     <div class="container about-index">
       <div class="markdown-body">
-        
+        <h3 id="1-BIP39：助记词-Mnemonic-→-种子-Seed"><a href="#1-BIP39：助记词-Mnemonic-→-种子-Seed" class="headerlink" title="1. BIP39：助记词 (Mnemonic) → 种子 (Seed)"></a>1. <strong>BIP39：助记词 (Mnemonic) → 种子 (Seed)</strong></h3><ul>
+<li>BIP39 定义了如何将随机数 (熵) 转换成一组易于记忆的助记词，并通过 PBKDF2-HMAC-SHA512 算法将助记词转化为种子 (Seed)。</li>
+<li>助记词本身不直接参与地址生成，而是作为人类可读形式的熵数据。</li>
+<li>该种子将作为 BIP32 的输入。</li>
+</ul>
+<blockquote>
+<p>✅ <strong>作用：解决“如何安全且便捷地生成和保存种子”</strong>  </p>
+</blockquote>
+<hr>
+<h3 id="2-BIP32：种子-Seed-→-主私钥-Master-Private-Key-链码-Chain-Code-→-子私钥-地址"><a href="#2-BIP32：种子-Seed-→-主私钥-Master-Private-Key-链码-Chain-Code-→-子私钥-地址" class="headerlink" title="2. BIP32：种子 (Seed) → 主私钥 (Master Private Key) + 链码 (Chain Code) → 子私钥&#x2F;地址"></a>2. <strong>BIP32：种子 (Seed) → 主私钥 (Master Private Key) + 链码 (Chain Code) → 子私钥&#x2F;地址</strong></h3><ul>
+<li>BIP32 定义了分层确定性 (HD) 钱包，通过种子生成“主私钥 + 链码”。</li>
+<li>利用“路径”和 HMAC-SHA512 组合算法，可依次推导出子私钥、孙私钥等。</li>
+<li>这种树状结构保证了钱包的扩展性和可恢复性。</li>
+</ul>
+<blockquote>
+<p>✅ <strong>作用：解决“如何从种子安全衍生无限多的子私钥&#x2F;地址”</strong>  </p>
+</blockquote>
+<hr>
+<h3 id="3-BIP44：规范化派生路径"><a href="#3-BIP44：规范化派生路径" class="headerlink" title="3. BIP44：规范化派生路径"></a>3. <strong>BIP44：规范化派生路径</strong></h3><ul>
+<li>BIP44 基于 BIP32 的树状结构，定义了一种标准化的路径格式：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m / 44&#x27; / coin_type&#x27; / account&#x27; / change / index</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>m</code></td>
+<td>根节点 (master)</td>
+</tr>
+<tr>
+<td><code>44&#39;</code></td>
+<td>固定值，代表遵循 BIP44 标准</td>
+</tr>
+<tr>
+<td><code>coin_type&#39;</code></td>
+<td>币种编号 (如 BTC&#x3D;0, ETH&#x3D;60)</td>
+</tr>
+<tr>
+<td><code>account&#39;</code></td>
+<td>账户编号，支持多账户</td>
+</tr>
+<tr>
+<td><code>change</code></td>
+<td>0&#x3D;外部接收地址，1&#x3D;找零地址</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>具体的地址序号</td>
+</tr>
+</tbody></table>
+<ul>
+<li>这一路径规范大大提高了钱包的通用性和兼容性。</li>
+</ul>
+<blockquote>
+<p>✅ <strong>作用：解决“如何让一个种子在多币种、多账户场景下按统一规范衍生地址”</strong></p>
+</blockquote>
+<hr>
+<h3 id="4-三者关系"><a href="#4-三者关系" class="headerlink" title="4. 三者关系"></a>4. <strong>三者关系</strong></h3><ul>
+<li><strong>BIP39</strong> 负责生成种子；</li>
+<li><strong>BIP32</strong> 负责从种子生成树状结构的钱包；</li>
+<li><strong>BIP44</strong> 规定了如何按标准化路径派生多种币种及账户的地址。</li>
+</ul>
+<blockquote>
+<p>🔗 <strong>完整流程：</strong><br><code>BIP39</code>（助记词 → 种子）→ <code>BIP32</code>（种子 → 主私钥 + 链码）→ <code>BIP44</code>（派生路径 → 地址）</p>
+</blockquote>
+<p>本周进度：1.搭建开发环境</p>
+<pre><code>             2.学习BIP39标准，确认助记词生成的技术细节 ，如
+</code></pre>
+<p>助记词的生成方法，校验和机制以及助记词到种子的转换方法。</p>
+<p>下周计划：前端代码开发，实现助记词生成功能，大概做出原型界面。</p>
+<p>大概开发一个区块链助记词安全性测试系统。主要内容包括助记词生成模块、报告生成模块、多语言支持系统需实现基于标准的助记词生成功能，提供助记词对应地址当前信息及是否有交易记录的查询。系统还需支持多语言助记词的生成和评估功能，设计友好的用户界面。</p>
+<p>+ </p>
+<p>本周进度：1.编写前端代码，实现了简易前端原型      2.基本实现助记词生成功能，支持简体中文，繁体中文，英文的助记词生成</p>
+<p>下周计划：1.继续优化前端界面  2.实现助记词生成的地址链上查询及最近交易记录查询，支持btc,eth,doge等</p>
+<p>本周进度：1.优化了地址查询接口，交易记录查询接口等查询的速度。 2. 加入了除中英文外的其它6种国家语言助记词生成功能</p>
+<p>下周计划：对系统进行测试并优化一些冗余代码</p>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://cdn.nlark.com/yuque/0/2025/png/40963539/1747913796259-3e7b87de-c8f7-4b04-9c1a-86648f664ab6.png">{style&#x3D;”zoom:25%;”}</th>
+<th align="center"><img src="https://cdn.nlark.com/yuque/0/2025/png/40963539/1747913796259-3e7b87de-c8f7-4b04-9c1a-86648f664ab6.png">{style&#x3D;”zoom:25%;”}</th>
+</tr>
+</thead>
+</table>
+
       </div>
     </div>
   
