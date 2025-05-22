@@ -153,91 +153,80 @@
   <!-- 关于页 url形式：https://yoursite/about/ -->
     <div class="container about-index">
       <div class="markdown-body">
-        <h3 id="1-BIP39：助记词-Mnemonic-→-种子-Seed"><a href="#1-BIP39：助记词-Mnemonic-→-种子-Seed" class="headerlink" title="1. BIP39：助记词 (Mnemonic) → 种子 (Seed)"></a>1. <strong>BIP39：助记词 (Mnemonic) → 种子 (Seed)</strong></h3><ul>
-<li>BIP39 定义了如何将随机数 (熵) 转换成一组易于记忆的助记词，并通过 PBKDF2-HMAC-SHA512 算法将助记词转化为种子 (Seed)。</li>
-<li>助记词本身不直接参与地址生成，而是作为人类可读形式的熵数据。</li>
-<li>该种子将作为 BIP32 的输入。</li>
-</ul>
-<blockquote>
-<p>✅ <strong>作用：解决“如何安全且便捷地生成和保存种子”</strong>  </p>
-</blockquote>
-<hr>
-<h3 id="2-BIP32：种子-Seed-→-主私钥-Master-Private-Key-链码-Chain-Code-→-子私钥-地址"><a href="#2-BIP32：种子-Seed-→-主私钥-Master-Private-Key-链码-Chain-Code-→-子私钥-地址" class="headerlink" title="2. BIP32：种子 (Seed) → 主私钥 (Master Private Key) + 链码 (Chain Code) → 子私钥&#x2F;地址"></a>2. <strong>BIP32：种子 (Seed) → 主私钥 (Master Private Key) + 链码 (Chain Code) → 子私钥&#x2F;地址</strong></h3><ul>
-<li>BIP32 定义了分层确定性 (HD) 钱包，通过种子生成“主私钥 + 链码”。</li>
-<li>利用“路径”和 HMAC-SHA512 组合算法，可依次推导出子私钥、孙私钥等。</li>
-<li>这种树状结构保证了钱包的扩展性和可恢复性。</li>
-</ul>
-<blockquote>
-<p>✅ <strong>作用：解决“如何从种子安全衍生无限多的子私钥&#x2F;地址”</strong>  </p>
-</blockquote>
-<hr>
-<h3 id="3-BIP44：规范化派生路径"><a href="#3-BIP44：规范化派生路径" class="headerlink" title="3. BIP44：规范化派生路径"></a>3. <strong>BIP44：规范化派生路径</strong></h3><ul>
-<li>BIP44 基于 BIP32 的树状结构，定义了一种标准化的路径格式：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m / 44&#x27; / coin_type&#x27; / account&#x27; / change / index</span><br></pre></td></tr></table></figure>
+        <div align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=matong0209.matong0209&"  />
+</div>
 
-<table>
-<thead>
-<tr>
-<th>部分</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>m</code></td>
-<td>根节点 (master)</td>
-</tr>
-<tr>
-<td><code>44&#39;</code></td>
-<td>固定值，代表遵循 BIP44 标准</td>
-</tr>
-<tr>
-<td><code>coin_type&#39;</code></td>
-<td>币种编号 (如 BTC&#x3D;0, ETH&#x3D;60)</td>
-</tr>
-<tr>
-<td><code>account&#39;</code></td>
-<td>账户编号，支持多账户</td>
-</tr>
-<tr>
-<td><code>change</code></td>
-<td>0&#x3D;外部接收地址，1&#x3D;找零地址</td>
-</tr>
-<tr>
-<td><code>index</code></td>
-<td>具体的地址序号</td>
-</tr>
-</tbody></table>
-<ul>
-<li>这一路径规范大大提高了钱包的通用性和兼容性。</li>
-</ul>
-<blockquote>
-<p>✅ <strong>作用：解决“如何让一个种子在多币种、多账户场景下按统一规范衍生地址”</strong></p>
-</blockquote>
-<hr>
-<h3 id="4-三者关系"><a href="#4-三者关系" class="headerlink" title="4. 三者关系"></a>4. <strong>三者关系</strong></h3><ul>
-<li><strong>BIP39</strong> 负责生成种子；</li>
-<li><strong>BIP32</strong> 负责从种子生成树状结构的钱包；</li>
-<li><strong>BIP44</strong> 规定了如何按标准化路径派生多种币种及账户的地址。</li>
-</ul>
-<blockquote>
-<p>🔗 <strong>完整流程：</strong><br><code>BIP39</code>（助记词 → 种子）→ <code>BIP32</code>（种子 → 主私钥 + 链码）→ <code>BIP44</code>（派生路径 → 地址）</p>
-</blockquote>
-<p>本周进度：1.搭建开发环境</p>
-<pre><code>             2.学习BIP39标准，确认助记词生成的技术细节 ，如
-</code></pre>
-<p>助记词的生成方法，校验和机制以及助记词到种子的转换方法。</p>
-<p>下周计划：前端代码开发，实现助记词生成功能，大概做出原型界面。</p>
-<p>大概开发一个区块链助记词安全性测试系统。主要内容包括助记词生成模块、报告生成模块、多语言支持系统需实现基于标准的助记词生成功能，提供助记词对应地址当前信息及是否有交易记录的查询。系统还需支持多语言助记词的生成和评估功能，设计友好的用户界面。</p>
-<p>+ </p>
-<p>本周进度：1.编写前端代码，实现了简易前端原型      2.基本实现助记词生成功能，支持简体中文，繁体中文，英文的助记词生成</p>
-<p>下周计划：1.继续优化前端界面  2.实现助记词生成的地址链上查询及最近交易记录查询，支持btc,eth,doge等</p>
-<p>本周进度：1.优化了地址查询接口，交易记录查询接口等查询的速度。 2. 加入了除中英文外的其它6种国家语言助记词生成功能</p>
-<p>下周计划：对系统进行测试并优化一些冗余代码</p>
-<img src="https://return-l.oss-cn-beijing.aliyuncs.com/d237846a10a11165544d1df26a90998.png" alt="图1" style="zoom:33%;" />
 
-<p>​															</p>
-<img src="https://return-l.oss-cn-beijing.aliyuncs.com/d237846a10a11165544d1df26a90998.png" alt="图2" style="zoom:33%;" />
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 align="left">👩‍💻  About Me</h3>
+
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p align="left">I'm from CHINA ....<br><br>- 🔭 I’m working as ...<br>- 📚 I'm currently learning ...<br>- ⚡ In my free time I like...</p>
+
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 align="left">🌈  Blog</h3>
+<ul align="left" style="list-style: none; padding-left: 1.5em;">
+<!--   <li><a href="https://www.matong.site" target="_blank">www.matong.site</a></li>     -->
+  <li>
+  <del>
+    <a href="https://www.matong.site" target="_blank">www.matong.site</a>
+  </del>
+</li>
+
+</ul>
+
+
+
+<h3 align="left">🛠 Language and tools</h3>  
+
+<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="40" alt="java logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" alt="python logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" height="40" alt="vuejs logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height="40" alt="spring logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" height="40" alt="redis logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" alt="nodejs logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain-wordmark.svg" height="40" alt="docker logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="40" alt="linux logo"  />  
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tomcat/tomcat-original.svg" height="40" alt="tomcat logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="40" alt="git logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height="40" alt="flask logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" height="40" alt="django logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/centos/centos-original.svg" height="40" alt="centos logo"  />  
+</div>
+
+<h3 id="-4"><a href="#-4" class="headerlink" title=""></a></h3><h3 align="left">🔥   My Stats :</h3>
+
+<h3 id="-5"><a href="#-5" class="headerlink" title=""></a></h3><div style="display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 10px; padding: 5px 0;">  
+  <img 
+    height="137px" 
+    src="https://github-readme-stats.vercel.app/api?username=matong0209&cache_seconds=0&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&bg_color=0,EC6C6C,FFD479,FFFC79,73FA79&theme=graywhite&locale=cn&card_width=450"   
+  />
+  <img 
+    height="137px" 
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=matong0209&hide_title=true&hide_border=true&layout=compact&bg_color=0,73FA79,73FDFF,D783FF&theme=graywhite&locale=cn&card_width=320"     
+  />
+</div>
+
+
+
+
       </div>
     </div>
   
