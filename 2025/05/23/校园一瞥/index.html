@@ -15,7 +15,7 @@
   
   <title>
     
-      archive_a: 2024/5 
+      校园一瞥 
       
       
       |
@@ -110,75 +110,152 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2025</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">校园一瞥</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2025-05-23 21:22:19
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%A0%A1%E5%9B%AD/" title="校园">
+                    #校园
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>校园里的小鸭子~</p>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/f916cebed457caa3ca0c98aff1fe26e.jpg" alt="f916cebed457caa3ca0c98aff1fe26e"></p>
+<hr>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/2d1f4ce0acfd120c7873eb9ec7c10ab.jpg" alt="2d1f4ce0acfd120c7873eb9ec7c10ab"></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2025/05/23/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1-BIP39%E6%A0%87%E5%87%86/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2025-05-23 21:22:19
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%A0%A1%E5%9B%AD/" title="校园">
+                        #校园
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="校园一瞥">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2025/05/23/%E6%A0%A1%E5%9B%AD%E4%B8%80%E7%9E%A5/">
-            <span>校园一瞥</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="毕业设计-BIP39标准">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2025/05/23/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1-BIP39%E6%A0%87%E5%87%86/">
-            <span>毕业设计-BIP39标准</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="测试一下本地上传">
-        <div class="time-m-d">05-09</div>
-        <div class="title">
-          <a href="/2025/05/09/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E6%9C%AC%E5%9C%B0%E4%B8%8A%E4%BC%A0/">
-            <span>测试一下本地上传</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">05-04</div>
-        <div class="title">
-          <a href="/2025/05/04/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="科技爱好者周刊347期">
-        <div class="time-m-d">05-22</div>
-        <div class="title">
-          <a href="/2024/05/22/%E7%A7%91%E6%8A%80%E7%88%B1%E5%A5%BD%E8%80%85%E5%91%A8%E5%88%8A347%E6%9C%9F/">
-            <span>科技爱好者周刊347期</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'nocPSpBGOJZTrGrdM335mgPj-MdYXbMMI',
+        appKey: 'DADsCueEOZfKVggavrMuGroW',
+        placeholder: 'Welcome!',
+        avatar: 'retro',
+        lang: 'zh-CN'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -435,6 +512,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%A0%A1%E5%9B%AD%E4%B8%80%E7%9E%A5 + '&url=' + http%3A%2F%2Fexample.com%2F2025%2F05%2F23%2F%25E6%25A0%25A1%25E5%259B%25AD%25E4%25B8%2580%25E7%259E%25A5%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2025/05/23/%E6%A0%A1%E5%9B%AD%E4%B8%80%E7%9E%A5/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
