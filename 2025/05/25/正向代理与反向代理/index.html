@@ -15,7 +15,7 @@
   
   <title>
     
-      校园一瞥 
+      正向代理与反向代理 
       
       
       |
@@ -157,19 +157,19 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">校园一瞥</div>
+      <div class="post-title">正向代理与反向代理</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-          2025-05-23 21:22:19
+          2025-05-25 23:01:03
         </span>
         
               <span class="post-tags">
                 <i class="iconfont icon-tags mr-10" title="标签"></i>
                 
                 <span class="span--tag mr-8">
-                  <a href="/tags/%E6%A0%A1%E5%9B%AD/" title="校园">
-                    #校园
+                  <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">
+                    #计算机网络
                   </a>
                 </span>
                 
@@ -177,17 +177,32 @@
           
       </div>
       <div class="markdown-body">
-        <p>校园里的小鸭子~</p>
-<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/f916cebed457caa3ca0c98aff1fe26e.jpg" alt="f916cebed457caa3ca0c98aff1fe26e"></p>
-<hr>
-<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/2d1f4ce0acfd120c7873eb9ec7c10ab.jpg" alt="2d1f4ce0acfd120c7873eb9ec7c10ab"></p>
+        <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h1><p>在计算机网络领域，代理服务器扮演着至关重要的角色，它在服务器与客户端之间充当中间人的角色，有效地提高系统的安全性、性能和可扩展性。<br>其中正向代理和反向代理是两种最为常见的代理方式。本文将详细介绍这两种代理方式的概念、特点、使用场景以及用途，帮助读者更好地理解它们在网络架构中的作用。</p>
+<h1 id="2-正向代理（Forward-Proxy）"><a href="#2-正向代理（Forward-Proxy）" class="headerlink" title="2 正向代理（Forward Proxy）"></a>2 正向代理（Forward Proxy）</h1><h2 id="2-1-正向代理概念"><a href="#2-1-正向代理概念" class="headerlink" title="2.1 正向代理概念"></a>2.1 正向代理概念</h2><p>正向代理是一种位于客户端和服务器之间的代理服务器。客户端将请求发送给正向代理，然后由代理服务器将请求转发给目标服务器。服务器将响应返回给代理服务器，再由代理服务器将响应转发给客户端。正向代理对客户端是透明的，客户端无需知道实际服务器的地址。</p>
+<h2 id="2-2-正向代理特点"><a href="#2-2-正向代理特点" class="headerlink" title="2.2 正向代理特点"></a>2.2 正向代理特点</h2><p><strong>1. 隐藏客户端身份：</strong> 正向代理可以隐藏客户端的真实IP地址，保护客户端的隐私。<br><strong>2. 访问控制：</strong> 正向代理可以根据一定的规则限制或允许客户端的访问请求，实现访问控制功能。<br><strong>3. 缓存加速：</strong> 正向代理可以缓存经常访问的页面或资源，提高访问速度，减轻服务器负担。</p>
+<h2 id="2-3-使用场景"><a href="#2-3-使用场景" class="headerlink" title="2.3 使用场景"></a>2.3 使用场景</h2><p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/167509-20240413152625206-750500807.png" alt="image"></p>
+<p><strong>1. 突破网络限制：</strong> 在某些地区或网络环境下，用户可能无法直接访问某些网站或服务。此时，可以通过设置正向代理来突破这些限制，实现访问。<br><img src="https://return-l.oss-cn-beijing.aliyuncs.com/167509-20240413153448310-1939621073.png" alt="image"></p>
+<p><strong>2. 网络安全：</strong> 通过正向代理，企业可以监控和管理员工的网络访问行为，隐藏客户端真实IP，防止敏感数据泄露。<br><strong>3. 内容过滤：</strong> 学校、图书馆等公共场所可以通过正向代理过滤不良内容，保护用户免受不良信息的侵害。<br><strong>4. 提高访问速度：</strong> 代理服务器设置硬盘缓冲区，可以将部分高频请求的响应数据保存到缓冲区中，以提高访问速度。</p>
+<h1 id="3-反向代理（Reverse-Proxy）"><a href="#3-反向代理（Reverse-Proxy）" class="headerlink" title="3 反向代理（Reverse Proxy）"></a>3 反向代理（Reverse Proxy）</h1><h2 id="3-1-反向代理概念"><a href="#3-1-反向代理概念" class="headerlink" title="3.1 反向代理概念"></a>3.1 反向代理概念</h2><p>反向代理是一种位于服务器和客户端之间的代理服务器。客户端将请求发送给反向代理，然后由代理服务器根据一定的规则将请求转发给后端服务器。后端服务器将响应返回给代理服务器，再由代理服务器将响应转发给客户端。反向代理对客户端是透明的，客户端无需知道实际服务器的地址,只需将反向代理当作目标服务器一样发送请求就可以了。</p>
+<h2 id="3-2-反向代理特点"><a href="#3-2-反向代理特点" class="headerlink" title="3.2 反向代理特点"></a>3.2 反向代理特点</h2><p><strong>1. 负载均衡：</strong> 反向代理可以根据后端服务器的负载情况，将请求分发到不同的服务器上，实现负载均衡，提高系统的整体性能。<br><strong>2. 安全性增强：</strong> 反向代理可以隐藏后端服务器的真实地址和端口，防止直接攻击（如DoS&#x2F;DDoS）。同时，还可以实现SSL加密、访问控制等安全功能。<br><strong>3. 缓存优化：</strong> 反向代理可以缓存静态资源，减少后端服务器的负载，提高响应速度。</p>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/167509-20240413155856784-15578093.png" alt="image"></p>
+<h2 id="3-3-使用场景"><a href="#3-3-使用场景" class="headerlink" title="3.3 使用场景"></a>3.3 使用场景</h2><p><strong>1. Web应用：</strong> 在Web应用中，反向代理常用于实现负载均衡、安全访问控制以及缓存优化等功能。<br><strong>2. API网关：</strong> API网关通常采用反向代理的方式，对外部请求进行统一管理和调度，实现API的安全、高效访问。<br><strong>3. CDN加速：</strong> 内容分发网络（CDN）通过在全球范围内部署反向代理服务器，实现内容的就近访问和加速传输。<br><img src="https://return-l.oss-cn-beijing.aliyuncs.com/167509-20240413155957605-1986681220.png" alt="image"></p>
+<h1 id="4-正反向代理的比较"><a href="#4-正反向代理的比较" class="headerlink" title="4 正反向代理的比较"></a>4 正反向代理的比较</h1><h2 id="4-1-相同点"><a href="#4-1-相同点" class="headerlink" title="4.1 相同点"></a>4.1 相同点</h2><p><strong>1. 位置和功能：</strong> 正向代理和反向代理都位于客户端和真实服务器之间，它们的主要功能都是将客户端的请求转发给服务器，然后再将服务器的响应转发给客户端。<br><strong>2. 提高访问速度：</strong> 两者都能通过缓存机制提高访问速度。当客户端请求某个资源时，如果代理服务器已经缓存了该资源，就可以直接从缓存中提供，而无需再次从原始服务器获取，从而节省了时间和带宽。</p>
+<h2 id="4-2-不同点"><a href="#4-2-不同点" class="headerlink" title="4.2 不同点"></a>4.2 不同点</h2><p><strong>1. 代理对象：</strong> 正向代理是为客户端提供代理服务，即服务器不知道真正的客户端是谁。而反向代理则是为服务器提供代理服务，即客户端不知道真正的服务器是谁。<br><strong>2. 架设位置：</strong> 正向代理通常是由客户端架设的，而反向代理则是由服务器架设的。<br><strong>3. 用途和目的：</strong> 正向代理的主要用途是为在防火墙内的局域网客户端提供访问Internet的途径，侧重于解决访问限制问题。而反向代理的主要用途是将防火墙后面的服务器提供给Internet用户访问，其目的在于实现负载均衡、安全防护等。<br><strong>4. 服务对象：</strong> 在正向代理中，服务器不知道真正的用户是谁；而在反向代理中，用户不知道真正的服务器是谁。</p>
+<h2 id="4-3-四层和七层中反代的区别"><a href="#4-3-四层和七层中反代的区别" class="headerlink" title="4.3 四层和七层中反代的区别"></a>4.3 四层和七层中反代的区别</h2><ul>
+<li>四层中根据用户的IP+PORT来做hash</li>
+<li>七层中根据Http协议中的属性来做hash（如Header、Cookies）</li>
+</ul>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>正向代理和反向代理在计算机网络中各自发挥着重要的作用。正向代理主要关注客户端的访问需求和安全性，而反向代理则更注重后端服务器的负载均衡、安全性和性能优化。在实际应用中，我们可以根据具体需求选择合适的代理方式，实现网络架构的优化和升级。</p>
+<p>转载出自作者：<a href="javascript:void(0);">Brand</a></p>
+<p>出处：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wzh2010/">https://www.cnblogs.com/wzh2010/</a></p>
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2025/05/23/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1-BIP39%E6%A0%87%E5%87%86/" target="_self">
+              <a href="/2025/05/23/%E6%A0%A1%E5%9B%AD%E4%B8%80%E7%9E%A5/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>上一篇</span>
               </a>
@@ -196,15 +211,15 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-              2025-05-23 21:22:19
+              2025-05-25 23:01:03
             </span>
             
                   <span class="post-tags">
                     <i class="iconfont icon-tags mr-10" title="标签"></i>
                     
                     <span class="span--tag mr-8">
-                      <a href="/tags/%E6%A0%A1%E5%9B%AD/" title="校园">
-                        #校园
+                      <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">
+                        #计算机网络
                       </a>
                     </span>
                     
@@ -213,16 +228,28 @@
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2025/05/25/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
-                <span>下一篇</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
           </div>
         </div>
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%88Forward-Proxy%EF%BC%89"><span class="toc-text">2 正向代理（Forward Proxy）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1 正向代理概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E7%89%B9%E7%82%B9"><span class="toc-text">2.2 正向代理特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2.3 使用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%88Reverse-Proxy%EF%BC%89"><span class="toc-text">3 反向代理（Reverse Proxy）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%A6%82%E5%BF%B5"><span class="toc-text">3.1 反向代理概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%89%B9%E7%82%B9"><span class="toc-text">3.2 反向代理特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">3.3 使用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">4 正反向代理的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%9B%B8%E5%90%8C%E7%82%B9"><span class="toc-text">4.1 相同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="toc-text">4.2 不同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E5%9B%9B%E5%B1%82%E5%92%8C%E4%B8%83%E5%B1%82%E4%B8%AD%E5%8F%8D%E4%BB%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4.3 四层和七层中反代的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4 总结</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
