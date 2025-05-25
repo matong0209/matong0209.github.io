@@ -15,7 +15,7 @@
   
   <title>
     
-      archive_a: 2025 
+      常见web安全漏洞 
       
       
       |
@@ -112,93 +112,134 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2025</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">常见web安全漏洞</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="发布时间"></i>
+          2025-05-25 23:53:10
+        </span>
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2025-05-25 23:53:10
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2025/05/25/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一篇</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="发布时间"></i>
+              2025-05-25 23:53:10
+            </span>
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2025-05-25 23:53:10
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="常见web安全漏洞">
-        <div class="time-m-d">05-25</div>
-        <div class="title">
-          <a href="/2025/05/25/%E5%B8%B8%E8%A7%81web%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/">
-            <span>常见web安全漏洞</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="正向代理与反向代理">
-        <div class="time-m-d">05-25</div>
-        <div class="title">
-          <a href="/2025/05/25/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
-            <span>正向代理与反向代理</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="校园一瞥">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2025/05/23/%E6%A0%A1%E5%9B%AD%E4%B8%80%E7%9E%A5/">
-            <span>校园一瞥</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="毕业设计-BIP39标准">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2025/05/23/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1-BIP39%E6%A0%87%E5%87%86/">
-            <span>毕业设计-BIP39标准</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="测试一下本地上传">
-        <div class="time-m-d">05-09</div>
-        <div class="title">
-          <a href="/2025/05/09/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E6%9C%AC%E5%9C%B0%E4%B8%8A%E4%BC%A0/">
-            <span>测试一下本地上传</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="置 顶">
-        <div class="time-m-d">05-04</div>
-        <div class="title">
-          <a href="/2025/05/04/hello-world/">
-            <span>置 顶</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="科技爱好者周刊347期">
-        <div class="time-m-d">05-22</div>
-        <div class="title">
-          <a href="/2024/05/22/%E7%A7%91%E6%8A%80%E7%88%B1%E5%A5%BD%E8%80%85%E5%91%A8%E5%88%8A347%E6%9C%9F/">
-            <span>科技爱好者周刊347期</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src='https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js' onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'oExNs5qt8wHtzAiTd07avx39-gzGzoHsz',
+        appKey: 'qXVg67MqODElSHOmGLTXNsvn',
+        placeholder: '在此输入你的评论吧.....【要想显示默认头像或自定义头像(需自行登录或注册Gravatar，然后修改自己的头像)，请输入邮箱即可】',
+        avatar: 'mp',
+        lang: 'zh-CN'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
