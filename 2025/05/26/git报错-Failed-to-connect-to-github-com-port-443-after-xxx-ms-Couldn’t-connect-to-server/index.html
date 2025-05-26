@@ -15,7 +15,7 @@
   
   <title>
     
-      常见web安全漏洞 
+      git报错--Failed to connect to github.com port 443 after xxx ms: Couldn’t connect to server 
       
       
       |
@@ -157,26 +157,92 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">常见web安全漏洞</div>
+      <div class="post-title">git报错--Failed to connect to github.com port 443 after xxx ms: Couldn’t connect to server</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="发布时间"></i>
-          发布时间: 2025-05-25 23:53:10
+          发布时间: 2025-05-26 16:41:20
         </span>
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-          更新时间: 2025-05-25 23:53:10
+          更新时间: 2025-05-26 16:41:20
         </span>
         
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/git/" title="git">
+                    #git
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
       <div class="markdown-body">
-        
+        <h2 id="🚀-摘要"><a href="#🚀-摘要" class="headerlink" title="🚀 摘要"></a>🚀 摘要</h2><p>在这篇技术博客中，我们将探讨如何解决 Git 在连接 GitHub 时出现的常见错误：“Failed to connect to github.com port 443 after xxx ms: Couldn’t connect to server”。</p>
+<h2 id="🧠-一、问题背景分析"><a href="#🧠-一、问题背景分析" class="headerlink" title="🧠 一、问题背景分析"></a>🧠 一、问题背景分析</h2><p>错误信息示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Failed to connect to github.com port 443 after xxx ms: Couldn<span class="string">&#x27;t connect to server</span></span><br></pre></td></tr></table></figure>
+
+<p>这个错误通常出现在以下情况：</p>
+<ul>
+<li>已经<strong>开启 VPN&#x2F;代理</strong>，但 Git <strong>没有通过代理走流量</strong>；</li>
+<li>系统代理设置正常，但 <strong>Git 没有感知到代理设置</strong>；</li>
+<li>使用了<strong>不支持的代理协议</strong>（如 Git 默认不识别 SOCKS5）；</li>
+<li>或者 <strong>科学上网工具是规则模式</strong>，Git 流量被漏掉。(鄙人就是这种)</li>
+</ul>
+<hr>
+<h2 id="🛠️-二、解决步骤详解"><a href="#🛠️-二、解决步骤详解" class="headerlink" title="🛠️ 二、解决步骤详解"></a>🛠️ 二、解决步骤详解</h2><h3 id="1-✅-确认你可以正常上网访问-GitHub"><a href="#1-✅-确认你可以正常上网访问-GitHub" class="headerlink" title="1. ✅ 确认你可以正常上网访问 GitHub"></a>1. ✅ 确认你可以正常上网访问 GitHub</h3><p>先通过浏览器或 <code>ping</code> 命令确认网络畅通：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ping github.com</span><br></pre></td></tr></table></figure>
+
+<p>如果能 ping 通但 <code>git clone</code> 不行，多半是 Git 没配置代理。</p>
+<hr>
+<h3 id="2-🔍-查找本地代理端口号"><a href="#2-🔍-查找本地代理端口号" class="headerlink" title="2. 🔍 查找本地代理端口号"></a>2. 🔍 查找本地代理端口号</h3><p>如果你使用的是 <strong>Clash、V2RayN、Surge、Shadowrocket 等代理工具</strong>，通常它监听在 <code>127.0.0.1:7890</code> 或 <code>127.0.0.1:1080</code>。</p>
+<p>可在代理软件中查看 “HTTP 代理” 或 “SOCKS 代理” 端口：</p>
+<ul>
+<li>Clash 默认：HTTP 端口 <code>7890</code></li>
+<li>V2RayN 常见：HTTP 端口 <code>10809</code>（用户配置）</li>
+</ul>
+<hr>
+<h3 id="3-⚙️-配置-Git-代理"><a href="#3-⚙️-配置-Git-代理" class="headerlink" title="3. ⚙️ 配置 Git 代理"></a>3. ⚙️ 配置 Git 代理</h3><p><strong>若为 HTTP 代理（最常见）</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p><strong>若为 SOCKS5 代理</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy socks5h://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy socks5h://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>✅ <strong><code>socks5h</code> 是推荐写法</strong>，因为它支持 DNS 解析走代理。</p>
+<hr>
+<h3 id="4-🧪-验证配置是否生效"><a href="#4-🧪-验证配置是否生效" class="headerlink" title="4. 🧪 验证配置是否生效"></a>4. 🧪 验证配置是否生效</h3><p>查看当前 Git 全局代理配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
+
+<p>如果输出中包含 <code>http.proxy</code> 和 <code>https.proxy</code>，说明配置成功。</p>
+<hr>
+<h3 id="5-🔄-刷新-DNS（可选）"><a href="#5-🔄-刷新-DNS（可选）" class="headerlink" title="5. 🔄 刷新 DNS（可选）"></a>5. 🔄 刷新 DNS（可选）</h3><p>在 Windows 命令行中输入以下命令，清除旧的 DNS 缓存：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">复制编辑</span><br><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="6-🧼-清除-Git-代理（如不再需要）"><a href="#6-🧼-清除-Git-代理（如不再需要）" class="headerlink" title="6. 🧼 清除 Git 代理（如不再需要）"></a>6. 🧼 清除 Git 代理（如不再需要）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧭-三、其他建议"><a href="#🧭-三、其他建议" class="headerlink" title="🧭 三、其他建议"></a>🧭 三、其他建议</h2><ul>
+<li>尽量将代理软件切换到<strong>全局模式</strong>测试；</li>
+<li>尝试使用镜像站（如 <code>ghproxy.com</code>）：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://ghproxy.com/https://github.com/user/repo.git</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果还不行，使用手机热点测试是否是局域网限制。</li>
+</ul>
+<hr>
+<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><p>本文介绍了当 Git 提示 <code>无法连接到 github.com:443</code> 时的常见原因及解决方案。核心在于：<strong>Git 本身不会自动使用系统代理，需要手动配置</strong>。</p>
+
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2025/05/25/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
+              <a href="/2025/05/25/%E5%B8%B8%E8%A7%81web%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>上一篇</span>
               </a>
@@ -185,26 +251,49 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="发布时间"></i>
-              发布时间: 2025-05-25 23:53:10
+              发布时间: 2025-05-26 16:41:20
             </span>
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-              更新时间: 2025-05-25 23:53:10
+              更新时间: 2025-05-26 16:41:20
             </span>
             
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/git/" title="git">
+                        #git
+                      </a>
+                    </span>
+                    
+                  </span>
+              
           </div>
           <div class="post-foot-prev">
-            
-              <a href="/2025/05/26/git%E6%8A%A5%E9%94%99-Failed-to-connect-to-github-com-port-443-after-xxx-ms-Couldn%E2%80%99t-connect-to-server/" target="_self">
-                <span>下一篇</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
             
           </div>
         </div>
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E6%91%98%E8%A6%81"><span class="toc-text">🚀 摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E4%B8%80%E3%80%81%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF%E5%88%86%E6%9E%90"><span class="toc-text">🧠 一、问题背景分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E4%BA%8C%E3%80%81%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="toc-text">🛠️ 二、解决步骤详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E2%9C%85-%E7%A1%AE%E8%AE%A4%E4%BD%A0%E5%8F%AF%E4%BB%A5%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%E8%AE%BF%E9%97%AE-GitHub"><span class="toc-text">1. ✅ 确认你可以正常上网访问 GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%F0%9F%94%8D-%E6%9F%A5%E6%89%BE%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-text">2. 🔍 查找本地代理端口号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E2%9A%99%EF%B8%8F-%E9%85%8D%E7%BD%AE-Git-%E4%BB%A3%E7%90%86"><span class="toc-text">3. ⚙️ 配置 Git 代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%F0%9F%A7%AA-%E9%AA%8C%E8%AF%81%E9%85%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88"><span class="toc-text">4. 🧪 验证配置是否生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%F0%9F%94%84-%E5%88%B7%E6%96%B0-DNS%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-text">5. 🔄 刷新 DNS（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%F0%9F%A7%BC-%E6%B8%85%E9%99%A4-Git-%E4%BB%A3%E7%90%86%EF%BC%88%E5%A6%82%E4%B8%8D%E5%86%8D%E9%9C%80%E8%A6%81%EF%BC%89"><span class="toc-text">6. 🧼 清除 Git 代理（如不再需要）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%AD-%E4%B8%89%E3%80%81%E5%85%B6%E4%BB%96%E5%BB%BA%E8%AE%AE"><span class="toc-text">🧭 三、其他建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E6%80%BB%E7%BB%93"><span class="toc-text">✅ 总结</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
