@@ -170,7 +170,190 @@
         
       </div>
       <div class="markdown-body">
-        <p>xxx</p>
+        <h2 id="🧠-前言"><a href="#🧠-前言" class="headerlink" title="🧠 前言"></a>🧠 前言</h2><p>在开发Web应用的过程中，安全问题往往是最容易被忽略、但又最致命的一环。无论你是前端、后端、全栈开发者，对常见Web安全漏洞的了解和防御手段都至关重要。</p>
+<p>本文将深入讲解<strong>10种常见Web安全漏洞</strong>，分析每种漏洞的<strong>成因、危害、典型案例以及防御策略</strong>，并提供开发者<strong>实战建议</strong>。</p>
+<hr>
+<h2 id="🔍-一、SQL注入（SQL-Injection）"><a href="#🔍-一、SQL注入（SQL-Injection）" class="headerlink" title="🔍 一、SQL注入（SQL Injection）"></a>🔍 一、SQL注入（SQL Injection）</h2><ul>
+<li><strong>漏洞描述</strong>：用户输入的数据被拼接到SQL语句中执行，导致数据库被攻击。</li>
+<li><strong>典型场景</strong>：登录接口、搜索框、数据筛选。</li>
+<li><strong>风险</strong>：数据泄露、表结构破坏、控制服务器。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>使用ORM或预编译语句（如<code>prepareStatement</code>、<code>MyBatis</code>）。</li>
+<li>对输入数据做类型校验、长度限制。</li>
+<li>数据库账户最小权限原则。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🧨-二、XSS-跨站脚本攻击（Cross-Site-Scripting）"><a href="#🧨-二、XSS-跨站脚本攻击（Cross-Site-Scripting）" class="headerlink" title="🧨 二、XSS 跨站脚本攻击（Cross-Site Scripting）"></a>🧨 二、XSS 跨站脚本攻击（Cross-Site Scripting）</h2><ul>
+<li><strong>漏洞描述</strong>：恶意脚本被注入网页，在用户浏览器中执行。</li>
+<li><strong>风险</strong>：Cookie被盗、页面篡改、用户信息泄露。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>所有输出内容进行 HTML 编码转义。</li>
+<li>启用 CSP（内容安全策略）。</li>
+<li>禁止插入 HTML 标签和 JS 脚本。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🎯-三、CSRF-跨站请求伪造（Cross-Site-Request-Forgery）"><a href="#🎯-三、CSRF-跨站请求伪造（Cross-Site-Request-Forgery）" class="headerlink" title="🎯 三、CSRF 跨站请求伪造（Cross-Site Request Forgery）"></a>🎯 三、CSRF 跨站请求伪造（Cross-Site Request Forgery）</h2><ul>
+<li><strong>漏洞描述</strong>：攻击者诱导用户浏览器发送请求操作。</li>
+<li><strong>风险</strong>：转账、改密、注销账户等非法请求。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>引入 <code>csrf_token</code> 验证机制。</li>
+<li>Cookie 设置 <code>SameSite=Strict</code>。</li>
+<li>敏感操作加入验证码或二次确认。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="⚔️-四、命令注入（Command-Injection）"><a href="#⚔️-四、命令注入（Command-Injection）" class="headerlink" title="⚔️ 四、命令注入（Command Injection）"></a>⚔️ 四、命令注入（Command Injection）</h2><ul>
+<li><strong>漏洞描述</strong>：用户输入被拼接到系统命令中执行。</li>
+<li><strong>风险</strong>：执行任意命令、读取或删除文件、控制系统。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>禁止拼接命令字符串。</li>
+<li>使用如 <code>subprocess.run</code>（Python）等安全API。</li>
+<li>对输入严格白名单验证。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="📁-五、文件上传漏洞"><a href="#📁-五、文件上传漏洞" class="headerlink" title="📁 五、文件上传漏洞"></a>📁 五、文件上传漏洞</h2><ul>
+<li><strong>漏洞描述</strong>：上传恶意脚本，获取WebShell。</li>
+<li><strong>风险</strong>：远程控制服务器、植入后门。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>限制上传文件类型（白名单）。</li>
+<li>文件重命名 + 存储到不可执行目录。</li>
+<li>上传目录无执行权限，或使用对象存储。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🔒-六、敏感信息泄露"><a href="#🔒-六、敏感信息泄露" class="headerlink" title="🔒 六、敏感信息泄露"></a>🔒 六、敏感信息泄露</h2><ul>
+<li><strong>漏洞描述</strong>：错误信息或代码暴露敏感数据。</li>
+<li><strong>风险</strong>：暴露用户信息、API密钥、配置路径。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>关闭生产环境 debug 模式。</li>
+<li>配置文件加密敏感字段。</li>
+<li>日志脱敏、权限控制。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="📂-七、目录遍历漏洞（Directory-Traversal）"><a href="#📂-七、目录遍历漏洞（Directory-Traversal）" class="headerlink" title="📂 七、目录遍历漏洞（Directory Traversal）"></a>📂 七、目录遍历漏洞（Directory Traversal）</h2><ul>
+<li><strong>漏洞描述</strong>：通过<code>../</code>访问未授权的文件。</li>
+<li><strong>风险</strong>：访问源码、配置、日志、口令等文件。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>路径白名单过滤。</li>
+<li>禁止用户输入影响文件路径。</li>
+<li>Nginx&#x2F;Apache 配置限制路径访问。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🔁-八、开放重定向（Open-Redirect）"><a href="#🔁-八、开放重定向（Open-Redirect）" class="headerlink" title="🔁 八、开放重定向（Open Redirect）"></a>🔁 八、开放重定向（Open Redirect）</h2><ul>
+<li><strong>漏洞描述</strong>：用户被重定向到非信任网址。</li>
+<li><strong>风险</strong>：钓鱼攻击、会话劫持。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>仅允许跳转到白名单地址。</li>
+<li>重定向地址加签名或使用ID映射。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🔐-九、暴力破解（Brute-Force）"><a href="#🔐-九、暴力破解（Brute-Force）" class="headerlink" title="🔐 九、暴力破解（Brute Force）"></a>🔐 九、暴力破解（Brute Force）</h2><ul>
+<li><strong>漏洞描述</strong>：通过大量尝试破解用户名密码。</li>
+<li><strong>风险</strong>：账号密码被暴力破解登录。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>登录失败计数 + 锁定策略。</li>
+<li>图形验证码、滑动验证码。</li>
+<li>异常登录告警或风控策略。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🆔-十、Session-劫持（Session-Hijacking）"><a href="#🆔-十、Session-劫持（Session-Hijacking）" class="headerlink" title="🆔 十、Session 劫持（Session Hijacking）"></a>🆔 十、Session 劫持（Session Hijacking）</h2><ul>
+<li><strong>漏洞描述</strong>：攻击者窃取用户会话 Cookie。</li>
+<li><strong>风险</strong>：用户账户被完全控制。</li>
+<li><strong>防御方案</strong>：<ul>
+<li>启用 HTTPS，防止 Cookie 被截获。</li>
+<li>设置 <code>HttpOnly</code>、<code>Secure</code> 属性。</li>
+<li>定期更新 Session ID。</li>
+</ul>
+</li>
+</ul>
+<h2 id="📋-总结表格（快速查阅）"><a href="#📋-总结表格（快速查阅）" class="headerlink" title="📋 总结表格（快速查阅）"></a>📋 总结表格（快速查阅）</h2><table>
+<thead>
+<tr>
+<th>漏洞名称</th>
+<th>原理</th>
+<th>危害</th>
+<th>防御关键点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SQL注入</td>
+<td>拼接SQL执行</td>
+<td>数据泄露&#x2F;篡改</td>
+<td>参数化、ORM、权限控制</td>
+</tr>
+<tr>
+<td>XSS</td>
+<td>页面注入脚本</td>
+<td>窃取用户数据</td>
+<td>输出转义、CSP</td>
+</tr>
+<tr>
+<td>CSRF</td>
+<td>利用登录状态</td>
+<td>非法请求操作</td>
+<td>Token、SameSite</td>
+</tr>
+<tr>
+<td>命令注入</td>
+<td>拼接系统命令</td>
+<td>远程控制</td>
+<td>API替代、输入校验</td>
+</tr>
+<tr>
+<td>文件上传</td>
+<td>上传后门脚本</td>
+<td>控制服务器</td>
+<td>类型限制、不可执行目录</td>
+</tr>
+<tr>
+<td>信息泄露</td>
+<td>暴露调试信息</td>
+<td>泄露口令&#x2F;配置</td>
+<td>关闭debug、脱敏</td>
+</tr>
+<tr>
+<td>目录遍历</td>
+<td>越权访问文件</td>
+<td>泄露敏感文件</td>
+<td>路径限制</td>
+</tr>
+<tr>
+<td>重定向</td>
+<td>跳转钓鱼地址</td>
+<td>用户欺骗</td>
+<td>地址校验</td>
+</tr>
+<tr>
+<td>暴力破解</td>
+<td>密码尝试爆破</td>
+<td>账号被盗</td>
+<td>验证码、风控</td>
+</tr>
+<tr>
+<td>会话劫持</td>
+<td>窃取Session</td>
+<td>控制账户</td>
+<td>HTTPS、HttpOnly</td>
+</tr>
+</tbody></table>
+<h2 id="📣-写在最后"><a href="#📣-写在最后" class="headerlink" title="📣 写在最后"></a>📣 写在最后</h2><p>Web 安全不仅是安全工程师的职责，更是每一位开发者应具备的基本素养。掌握这些常见漏洞，既能保护用户数据，也能提升你的技术信任度。</p>
+<p>如果你觉得这篇文章对你有帮助，欢迎点赞、收藏、转发 🙌。更多技术干货，欢迎关注猫头虎技术笔记！</p>
 
       </div>
       
@@ -206,6 +389,23 @@
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E5%89%8D%E8%A8%80"><span class="toc-text">🧠 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%8D-%E4%B8%80%E3%80%81SQL%E6%B3%A8%E5%85%A5%EF%BC%88SQL-Injection%EF%BC%89"><span class="toc-text">🔍 一、SQL注入（SQL Injection）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A8-%E4%BA%8C%E3%80%81XSS-%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88Cross-Site-Scripting%EF%BC%89"><span class="toc-text">🧨 二、XSS 跨站脚本攻击（Cross-Site Scripting）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E4%B8%89%E3%80%81CSRF-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88Cross-Site-Request-Forgery%EF%BC%89"><span class="toc-text">🎯 三、CSRF 跨站请求伪造（Cross-Site Request Forgery）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%94%EF%B8%8F-%E5%9B%9B%E3%80%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%EF%BC%88Command-Injection%EF%BC%89"><span class="toc-text">⚔️ 四、命令注入（Command Injection）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%81-%E4%BA%94%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="toc-text">📁 五、文件上传漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%92-%E5%85%AD%E3%80%81%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-text">🔒 六、敏感信息泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%82-%E4%B8%83%E3%80%81%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%EF%BC%88Directory-Traversal%EF%BC%89"><span class="toc-text">📂 七、目录遍历漏洞（Directory Traversal）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%81-%E5%85%AB%E3%80%81%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%88Open-Redirect%EF%BC%89"><span class="toc-text">🔁 八、开放重定向（Open Redirect）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%90-%E4%B9%9D%E3%80%81%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%EF%BC%88Brute-Force%EF%BC%89"><span class="toc-text">🔐 九、暴力破解（Brute Force）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%86%94-%E5%8D%81%E3%80%81Session-%E5%8A%AB%E6%8C%81%EF%BC%88Session-Hijacking%EF%BC%89"><span class="toc-text">🆔 十、Session 劫持（Session Hijacking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8B-%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC%EF%BC%88%E5%BF%AB%E9%80%9F%E6%9F%A5%E9%98%85%EF%BC%89"><span class="toc-text">📋 总结表格（快速查阅）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A3-%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-text">📣 写在最后</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
