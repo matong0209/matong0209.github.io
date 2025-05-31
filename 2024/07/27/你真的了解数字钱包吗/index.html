@@ -15,7 +15,7 @@
   
   <title>
     
-      置 顶 
+      你真的了解数字钱包吗? 
       
       
       |
@@ -157,27 +157,117 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">置 顶</div>
+      <div class="post-title">你真的了解数字钱包吗?</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="发布于"></i>
-          发布于: 2025-05-04 21:39:45
+          发布于: 2024-07-27 13:55:30
         </span>
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新于"></i>
-          更新于: 2025-05-25 01:37:17
+          更新于: 2025-05-31 14:02:32
         </span>
         
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链">
+                    #区块链
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
       <div class="markdown-body">
-        <p><strong>之前的博客由于服务商问题，数据部分丢失，正在找回中………</strong></p>
+        <p>**文：nobodyjack （Twitter: @**ethcrap）</p>
+<p>   <strong>01</strong>   </p>
+<h1 id="你真的了解数字钱包吗？"><a href="#你真的了解数字钱包吗？" class="headerlink" title="你真的了解数字钱包吗？"></a><strong>你真的了解数字钱包吗？</strong></h1><p>如果你是加密货币的持有者，相信你对数字钱包应该很熟悉了吧。目前市面上的钱包应用非常多，有支持单链的、支持多链的，有手机 APP、有网页、有桌面客户端，还有浏览器插件如 MetaMask。但你真的了解数字钱包吗？</p>
+<p>什么是HD钱包，为什么绝大多数钱包应用都自称是HD 钱包？助记词与私钥是什么关系？为什么可以只使用一组助记词去控制多个账户？为什么可以只使用一组助记词去控制多条链上的资产？BIP32、BIP44、BIP39这些又是什么鬼？</p>
+<p>如果你想知道这些问题的答案，来看看这篇文章吧。</p>
+<p>   <strong>02</strong>   </p>
+<h1 id="什么是密钥和地址"><a href="#什么是密钥和地址" class="headerlink" title="什么是密钥和地址?"></a><strong>什么是密钥和地址?</strong></h1><p>在了解数字钱包之前，我们首先需要理解密钥（私钥、公钥）、地址及它们之间的关系。</p>
+<p><strong>1）公匙 &#x3D; 银行账户， 地址 &#x3D; 银行卡号， 私钥 &#x3D; 账户密码</strong> </p>
+<p>我们可以把「链」想象成银行，<strong>那么「公钥」就像你的银行账户，「地址」就像你的银行卡号，「私钥」就像你的“银行卡号+账户密码”</strong>。公钥&#x2F;地址用于识别身份，私钥用于控制账户。</p>
+<p>用以太坊钱包为例，创建一个以太坊钱包后，会生成一个以“0x”开头的字符串，这个字符串就是钱包「地址」。</p>
+<p>钱包的「地址」是由「公钥」通过计算得来，就像银行先给你开户，后给你银行卡卡号。</p>
+<p>钱包「地址」的主要用途是收款，当然也可以作为转账的凭证，就像别人打钱给你时你需要告诉人家银行卡卡号一样。</p>
+<p><strong>「私钥」就相当于是“银行卡号+账户密码”，非常重要，一定要妥善保存。</strong></p>
+<p><strong>2）私钥 —&gt; 公钥 —&gt; 地址</strong></p>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/image-Crom1.png" alt="img"></p>
+<ul>
+<li><p>k，私钥，通常是随机产生，需要绝对保密的</p>
+</li>
+<li><p>K，公钥，由私钥通过椭圆曲线乘法运算而来，不可倒推出私钥，可以不保密</p>
+</li>
+<li><p>A，地址，由公钥通过单向哈希运算而来，不可倒推出公钥，是完全公开的</p>
+<p> <strong>03</strong></p>
+</li>
+</ul>
+<h1 id="钱包里没有代币"><a href="#钱包里没有代币" class="headerlink" title="钱包里没有代币"></a><strong>钱包里没有代币</strong></h1><p>一个常见的误解认为钱包中保存着btc、eth等各种代币。实际上，钱包中是没有任何代币的，各种代币都是在链上的，钱包只保存了密钥对（公钥、私钥）。</p>
+<p>钱包可以保存一对或多对密钥，其中私钥可以用来签名交易，进行控制属于该私钥的代币。</p>
+<p>简单来说，数字钱包可以形象地理解为是一个钥匙串，实际是一个管理密钥（生成、存储、签名）的工具。</p>
+<p>  <strong>04</strong>  </p>
+<h1 id="什么是HD钱包、BIP-32？"><a href="#什么是HD钱包、BIP-32？" class="headerlink" title="什么是HD钱包、BIP-32？"></a><strong>什么是HD钱包、BIP-32？</strong></h1><p><strong>1）非确定性钱包 —— Just a Bunch Of Keys</strong></p>
+<p>在HD钱包出现之前，早期的钱包中保存的每一个私钥都是通过不同随机数相互独立生成的，这类钱包被称作非确定性钱包（或随机钱包），也被称为JBOK（Just  a Bunch Of Keys）钱包。</p>
+<p>但为了更好保护隐私和安全，我们通常需要很多账号（例如：交易所需要为每个用户生成一个收款账户），那我们就需要生成一堆私钥，而每个私钥都需要备份，管理起来就特别麻烦了。</p>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/image-LgnQ.png" alt="img"></p>
+<p><strong>2）HD钱包 &#x2F; BIP-32 —— 避免管理一堆私钥的麻烦</strong></p>
+<p>为了解决非确定性钱包的私钥管理麻烦，就有了BIP-32 提议：根据一个随机数种子通过分层确定性推导的方式得到n个私钥，这样保存的时候，只需要保存一个种子就可以，私钥可以推导出来。</p>
+<p>BIP-32提案的名字是：Hierarchical Deterministic Wallets， 就是我们所说的HD钱包。</p>
+<p>BIP-32:<a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki</a></p>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/image-LgnQ1.png"></p>
+<p>补充说明：</p>
+<p>BIP —— Bitcoin Improvement Proposals 比特币改进建议, BIP-32是第32个改进建议。</p>
+<p>  <strong>05</strong>   </p>
+<p><strong>什么是BIP-39  ，助记词与私钥是什么关系？</strong></p>
+<p><strong>1）BIP-39</strong></p>
+<p>BIP-32让我们只需要备份一个种子，而不是一堆秘钥，但 BIP-32中的种子是一个 16 字节的 16 进制的随机数，非常难记。于是社区在 <strong>BIP-39 中提出了一种助记词方案</strong>，这让我们只需要记住12或24个单词，就可以在支持该标准的钱包中恢复所有密钥。</p>
+<p>助记词的使用，让钱包备份的变得容易很多，相比之前的随机字符串，读记都要容易许多。</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/*16进制表示的种子*/0C1E24E5917779D297E14D45F14E1A1A/*助记词表示的种子*/army van defense carry jealous <span class="literal">true</span> garbage claim <span class="built_in">echo</span> media make crunch</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2）助记词 —&gt; 种子 —&gt; HD钱包</strong></p>
+<p>说到助记词，很多人可能会误以为助记词是为了方便保存私钥而创建的一种保存私钥的方式。实际上是BIP-39 中提出的助记词是为了方便记录种子，而主私钥是由助记词推演而来。</p>
+<ul>
+<li>生成助记词：根据128位随机数生成助记词</li>
+<li>**从助记词生成种子：**通过密钥生成函数 <strong>PBKDF2</strong> 算法来生成种子。</li>
+<li>从种子生成主私钥：通过 HMAC-SHA512 生成主私钥</li>
+</ul>
+<p><img src="https://return-l.oss-cn-beijing.aliyuncs.com/image-BqD1w.png" alt="img"></p>
+<p>  <strong>06</strong>  </p>
+<p><strong>为什么需要 BIP-44？</strong></p>
+<p>BIP-44 基于 BIP32 协议，提出一种让HD钱包支持多币种多账户结构的体系。</p>
+<p>BIP-44指定了包含5个预定义树状层级的结构，各层定义如下：</p>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m / purpose&#x27; / coin&#x27; / account&#x27; / change / address_index</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>m是固定的, Purpose也是固定的，值为44（或者 0x8000002C）</p>
+<p><strong>Coin type</strong></p>
+<p>这个代表的是币种，0代表比特币，1代表比特币测试链，60代表以太坊</p>
+<p>完整的币种列表地址：<a target="_blank" rel="noopener" href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md">https://github.com/satoshilabs/slips/blob/master/slip-0044.md</a></p>
+<p><strong>Account</strong></p>
+<p>代表这个币的账户索引，允许用户他们钱包分成多个逻辑上的子账户，从0开始</p>
+<p><strong>Change</strong></p>
+<p>常量0用于外部(收款地址)，常量1用于内部（也称为找零地址）。外部用于在钱包外可见的地址（例如，用于接收付款）。内部链用于在钱包外部不可见的地址，用于返回交易变更。以太坊不存在找零的概念，所以只用0。</p>
+<p><strong>address_index</strong></p>
+<p>这就是地址索引，从0开始，代表生成第几个地址，官方建议，每个account下的address_index不要超过20</p>
+<p><strong>总之使用了 BIP44 协议的 HD 钱包，可以分出不同体系币种的私钥。意味着，一个主私钥可以生成一个比特币钱包私钥，可以生成一个以太坊钱包的私钥…..</strong></p>
+<p><strong>而且因为同用一个主私钥和助记词，非常方便用户备份。</strong></p>
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2025/05/03/github%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%BE%8E%E5%8C%96/" target="_self">
+              <a href="/2024/05/22/%E7%A7%91%E6%8A%80%E7%88%B1%E5%A5%BD%E8%80%85%E5%91%A8%E5%88%8A347%E6%9C%9F/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>上一篇</span>
               </a>
@@ -186,17 +276,28 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="发布于"></i>
-              发布于: 2025-05-04 21:39:45
+              发布于: 2024-07-27 13:55:30
             </span>
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="更新于"></i>
-              更新于: 2025-05-25 01:37:17
+              更新于: 2025-05-31 14:02:32
             </span>
             
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链">
+                        #区块链
+                      </a>
+                    </span>
+                    
+                  </span>
+              
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2025/05/09/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E6%9C%AC%E5%9C%B0%E4%B8%8A%E4%BC%A0/" target="_self">
+              <a href="/2025/05/03/github%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%BE%8E%E5%8C%96/" target="_self">
                 <span>下一篇</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -206,6 +307,23 @@
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3%E6%95%B0%E5%AD%97%E9%92%B1%E5%8C%85%E5%90%97%EF%BC%9F"><span class="toc-text">你真的了解数字钱包吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%86%E9%92%A5%E5%92%8C%E5%9C%B0%E5%9D%80"><span class="toc-text">什么是密钥和地址?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%92%B1%E5%8C%85%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BB%A3%E5%B8%81"><span class="toc-text">钱包里没有代币</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFHD%E9%92%B1%E5%8C%85%E3%80%81BIP-32%EF%BC%9F"><span class="toc-text">什么是HD钱包、BIP-32？</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
